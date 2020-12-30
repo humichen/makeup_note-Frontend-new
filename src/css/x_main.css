@@ -1,0 +1,838 @@
+*{
+    font-family: 微軟正黑體;
+}
+textarea{
+    resize: none;
+}
+.display-none{
+    display: none;
+}
+.display-block{
+    display: block;
+}
+.x-detail-top{
+    font-size: 16px;
+    text-align: end;
+    margin: 0 4.5vw;
+    margin-top: 7px;
+}
+.x-dib{
+    display: inline-block;
+}
+.x-search-box{
+    position: relative;
+}
+.x-pinkbtn {
+    width: 96px;
+    height: 32px;
+    background-color: #FFA5A7;
+    color: #fff;
+    text-align: center;
+    font-size: 1em;
+    border-radius: 16px;
+    vertical-align:top;
+    line-height: 32px;
+    margin-left: 24px;
+    cursor: pointer;
+}
+.x-pinkbtn:hover{
+    background: #D07171;
+}
+.x-search-icon{
+    position: absolute;
+    color:#906559;
+    width: 20px;
+    height: 20px;
+    right: 12px;
+    top: 4px;
+    /* bottom: 6px; */
+}
+#x-search-bar{
+    width: 36vw;
+    height: 32px;
+    border-radius: 58px;
+    border:0 none;
+    padding: 8px 16px;
+    font-size: 1em;
+    background-color: #FFEEEE;
+    color: #A0A0A0;
+}
+#x-search-bar:focus{
+    border-radius: 58px;
+    border: 1px solid #D07171;
+    outline: none;
+}
+#x-search-bar::placeholder {
+    color: #A0A0A0;
+}
+#x-search-bar::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+}
+/* 詳細 */
+.x-detail{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 4.5vw;
+    margin-top: 27px;
+    font-size: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    min-height: 100vh;
+    /* min-height: 100vh; */
+    /* border: solid 1px; */
+}
+.x-tag{
+    height:100%;
+    /* flex: auto; */
+}
+.x-tag-title{
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #D07171;
+    height: 20px;
+    margin-bottom: 20px;
+}
+.x-tag-box{
+    background-color: #FFEEEE;
+    width: 20vw;
+    padding: 10px 12px;
+    border-radius: 10px;
+    height: 100%;
+    /* overflow: scroll;
+    overflow-x: hidden; */
+}
+.x-tag-btn{
+    border: 0;
+    font-size: 0.875em;
+    color: #906559;
+    border-radius: 16px;
+    padding: 6px 12px;
+    outline: none;
+    background-color: #fff;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-left: 4px;
+}
+.x-tag-btn:hover{
+    background-color: #906559;
+    color: #fff;
+}
+/* 分隔線 */
+/* .x-divider{
+    width: 1px;
+    height: 100%;
+    background-color: #906559;
+    margin-left: 36px;
+} */
+.x-detail > hr{
+    /* margin-left: 52px; */
+    border-right: 1px solid #906559;
+}
+/* 美妝管理 */
+.x-list{
+    /* overflow: scroll;
+    overflow-x: hidden; */
+    height: 100%;
+    margin-top: 0;
+    /* padding-right: 8px; */
+    font-size: 16px;
+    padding-left: 0;
+    
+}
+.x-list > a{
+    color: #906559;
+    
+}
+li{
+    list-style: none;
+}
+.x-list-nothing{
+    width: 58vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:90vh;
+    color: #906559;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 2rem;
+    font-weight: bold;
+}
+.x-list-box{
+    position: relative;
+    width: 58vw;
+    background-color: #FFD3D3;
+    border-radius: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+.x-list-box:hover{
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.x-list-box-expired{
+    background-color: #FFED95;
+}
+.x-list-box > img{
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    margin-left: 20px;
+}
+.x-expired{
+    position: absolute;
+    width: 100px;
+    height: 84px;
+    top: 0;
+    left: 0;
+    background-image: url(../img/expired_m.png);
+    background-size: contain;
+}
+.x-list-detail{
+    display: inline-block;
+    margin-left: 1rem;
+    vertical-align:top;
+    width: 55%;
+    /* border: 1px solid #000; */
+
+}
+.x-list-detail-title{
+    font-size: 1.25em;
+    margin-bottom: 6px;
+    height: 28px;
+    display: -webkit-box;
+    text-overflow : ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
+}
+.x-list-detail >a{
+    color: #906559;
+    text-decoration: none;
+}
+.x-list-detail p{
+    margin-top: 2px;
+    font-size: 1em;
+    /* line-height: 10px; */
+    height: 10px;
+    /* border: 1px solid #000; */
+    font-weight: normal;
+    color: #906559;
+}
+.x-list-detail-tag{
+    width: 110%;
+    display: inline-block;
+}
+.x-list-color{
+    /* display: inline-block; */
+    position: absolute;
+    width: 84px;
+    height: 112px;
+    right: 56px;
+    top: 16px;
+    /* margin-left: 25%; */
+}
+.x-list-colourpattern{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    color: #906559;
+    line-height: 1.75em;
+    height: 1.75em;
+    background-color: #fff;
+}
+#x-tooltipmenu{
+   position: absolute;
+   width: 20px;
+   height: 20px;
+   text-align: center;
+   top: 8px;
+   right: 8px;
+   color: #906559; 
+   outline: none;
+   background-color: transparent;
+   border: 0;
+}
+#x-tooltipmenu:focus +.x-tooltip{
+    display: block;
+}
+#x-tooltipmenu:hover +.x-tooltip{
+    display: block;
+}
+.x-tooltip:hover{
+    display: block;
+}
+.x-tooltip{
+    display: none;
+    position: absolute;
+    width: 60px;
+    top: 40px;
+    right: 2px;
+    background-color: #fff;
+    border-radius: 5px;
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.x-tooltip::before{
+    position: absolute;
+    top: -12px;
+    right: 12px;
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 6px 12px 6px;
+    border-color: transparent transparent #fff transparent;
+}
+.x-tooltip-btn{
+    border: 0;
+    font-size: 1em;
+    color: #906559;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+    background-color: #fff;
+}
+.x-tooltip-btn:hover{
+    background-color: rgba(144, 101, 89, 0.4);
+    color: #fff;
+}
+.x-tooltip > hr{
+    width: 70%;
+    border-top: 1px solid #906559;
+}
+
+/* 方法管理 */
+.x-method> div{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    /* overflow: scroll;
+    overflow-x: hidden; */
+    width: 58vw;
+    margin-top: 0;
+    /* padding-right: 8px; */
+    font-size: 16px;
+}
+.x-method-box{
+    position: relative;
+    background-color: #FFD3D3;
+    border-radius: 10px;
+    width: 30%;
+    height: 100%;
+    min-height: 224px;
+    /* max-height: 224px; */
+    padding-bottom: 12px;
+    margin-right: 24px;
+    margin-bottom: 28px;
+}
+.x-method-box:hover{
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.x-method-detail> .x-method-title{
+    font-size: 1em;
+    color: #906559;
+    width: 80%;
+    height: 100%;
+    display: -webkit-box;
+    text-overflow : ellipsis;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 32px;
+}
+.x-method-title > a{
+    text-decoration: none;
+    color: #906559;
+}
+.x-method-detail> .x-method-tag{
+    height: 100%;
+    margin-top: 12px;
+    padding-left: 12px;
+    padding-right: 4px;
+}
+.x-method-tag > .x-tag-btn{
+    margin-left: 4px;
+}
+.x-method-box > #x-tooltipmenu{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    top: 8px;
+    right: 8px;
+    color: #906559; 
+    outline: none;
+    background-color: transparent;
+    border: 0;
+}
+/* 編輯葉面 */
+.x-makeup-editpage{
+    width: 58vw;
+    height: 100%;
+    margin-right: 0;
+    font-size: 16px;
+}
+.x-makeup-edit-detail{
+    position: relative;
+    background-color: #FFD3D3;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding-bottom: 24px;
+    /* max-height: 480px; */
+}
+.x-makeup-edit-detail > img{
+    width: 220px;
+    height: 220px;
+    background-color: #fff;
+    margin-left: 28px;
+    margin-top: 24px;
+    display: inline-block;
+}
+.x-makeup-edit-detail > #x-tooltipmenu{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5em;
+    text-align: center;
+    top: 24px;
+    right: 8px;
+    color: #906559; 
+    outline: none;
+    background-color: transparent;
+    border: 0;
+}
+.x-makeup-edit-detail > .x-tooltip{
+    top: 64px;
+    right: 6px;
+}
+.x-editpage-detail{
+    width: 420px;
+    height: 220px;
+    display: inline-block;
+    margin-top: 24px;
+    margin-left: 20px;
+    vertical-align: top;
+    color: #906559;
+}
+.x-editpage-detail > .x-editpage-detail-title{
+    font-size: 1.5em;
+    line-height: 1.5em;
+    width: 100%;
+    height: 102px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    overflow:hidden;
+    white-space: normal;
+}
+
+.x-makeup-edit-detail >.x-method-tag{
+    margin-left: 28px;
+    margin-right: 110px;
+}
+.x-makeup-note{
+    position: relative;
+    margin-left: 28px;
+    margin-right: 14px;
+    margin-top: 16px;
+    height: 120px;
+}
+.x-makeup-note > h1{
+    font-size: 1em;
+    color: #906559;
+    line-height: 1em;
+    margin-top: 2px;
+    margin-bottom:6px;
+}
+.x-method-color{
+    /* display: inline-block; */
+    position: absolute;
+    width: 84px;
+    height: 112px;
+    right: 0px;
+    bottom: 0px;
+}
+.x-method-colourpattern{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    color: #906559;
+    line-height: 1.75em;
+    height: 1.75em;
+    background-color: #fff;
+}
+#x-makeup-input{
+    width: 80%;
+    height: 65%;
+    border-radius: 10px;
+    border:0 none;
+    padding: 8px 16px;
+    font-size: 1em;
+    background-color: #FFEEEE;
+    color: #906559;
+    margin-top: 0;
+}
+#x-makeup-input:focus{
+    border: 1px solid #D07171;
+    outline: none;
+}
+
+.x-makeup-editpage .x-list-group{
+    position: absolute;
+    width: 100%;
+    z-index: 50;
+    border: 1px solid #906559;
+    top: 39px;
+    border-top: 0;
+    padding-left: 0;
+    background-color: #fff; 
+}
+
+/* 美妝彈出視窗 */
+.x-madal{
+    position: fixed;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(92, 92, 92, 0.7);
+    color: #906559;
+    font-size: 16px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.x-madal-add-makeup{
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%)translateX(-50%);
+    width: calc(50%);
+    min-width: 400px;
+    height: calc(70%);
+    max-height: 484px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+.x-close{
+    position: absolute;
+    font-size: 1.85em;
+    right: 20px;
+    top: 20px;
+    padding: 0;
+    cursor: pointer;
+    /* border: 1px solid; */
+}
+.x-madal-add-makeup-box{
+    display: flex;
+    width: 95%;
+    /* border: 1px solid #906559; */
+}
+.x-madal-add-makeup-box-right{
+    /* display: inline-block; */
+    width: 200px;
+    margin-right: 44px;
+    /* border: 1px solid; */
+}
+.x-madal-add-makeup-box-right > h1{
+    font-size: 1.5em;
+    line-height: 0;
+    margin-bottom: 26px;
+}
+.x-madal-add-makeup-box-right > img{
+    width: 200px;
+    height: 200px;
+    border: 1px solid #906559;
+}
+.x-madal-add-makeup-box-left{
+    /* display: inline-block; */
+    /* border: 1px solid; */
+    width: 80%;
+    max-width: 100%;
+    /* min-width: 336px; */
+    /* background-color: red; */
+}
+
+.x-madal-uploadimg{
+    width: 120px;
+    height: 32px;
+    border-radius: 16px;
+    border: 1px solid #906559;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #906559;
+    background-color: #fff;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.x-madal-uploadimg:hover{
+    background-color: #906559;
+    color: #fff;
+    border: 1px solid #fff;
+}
+.x-madal-add-makeup-input{
+    /* border: 1px solid #906559; */
+    margin-bottom: 20px;
+}
+.x-madal-add-makeup-select{
+    margin-bottom: 20px;
+}
+option{
+    color: #906559;
+}
+.x-madal-add-makeup-note{
+    width: 95%;
+    /* background-color: #906559; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.x-madal-add-makeup-btn{
+    width: 96px;
+    height: 32px;
+    border-radius: 16px;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #906559;
+    cursor: pointer;
+    margin-top: 16px;
+}
+.x-madal-add-makeup-btn:hover{
+    background-color: #fff;
+    color: #906559;
+    border: 1px solid #906559;
+}
+/* input長度 */
+.x-input-width{
+    width: 100%;
+}
+/* 關鍵字 */
+.x-madal-add-makeup-input-title{
+    position: relative;
+}
+.x-list-group{
+    /* display: none; */
+    position: absolute;
+    width: 100%;
+    z-index: 50;
+    /* bottom: -16px; */
+    border: 1px solid #906559;
+    border-top: 0;
+    padding-left: 0;
+    background-color: #fff;
+}
+.x-list-group-item{
+    list-style: none;
+    /* background-color: red; */
+    margin-left: 0;
+    padding: 5px;
+}
+.x-list-group-item:hover{
+    background-color: #FFD3D3;
+}
+.x-list-group-item:active{
+    background-color: #FFD3D3;
+}
+/* input動畫 */
+
+.field{
+    --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #BC918A);
+  }
+  
+  .field__input{ 
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+  
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  
+    font-family: inherit;
+    font-size: 1em;
+  }
+  
+  .field__input:focus::-webkit-input-placeholder{
+    color: var(--uiFieldPlaceholderColor);
+  }
+  
+  .field__input:focus::-webkit-input-placeholder{
+    color: var(--uiFieldPlaceholderColor);
+  }
+
+  
+  .a-field{
+    display: inline-block;
+  }
+  
+  .a-field__input{ 
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  .a-field__input:focus{
+    outline: none;
+  }
+
+  
+  .a-field{
+    --uiFieldHeight: var(--fieldHeight, 40px);  
+    --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
+    --uiFieldBorderColor: var(--fieldBorderColor);
+  
+    --uiFieldFontSize: var(--fieldFontSize, 1em);
+    --uiFieldHintFontSize: var(--fieldHintFontSize, 1em);
+  
+    --uiFieldPaddingRight: var(--fieldPaddingRight, 15px);
+    --uiFieldPaddingBottom: var(--fieldPaddingBottom, 15px);
+    --uiFieldPaddingLeft: var(--fieldPaddingLeft, 15px);   
+  
+    position: relative;
+    box-sizing: border-box;
+    font-size: var(--uiFieldFontSize);
+    padding-top: 1em;  
+  }
+  
+  .a-field .a-field__input{
+    height: var(--uiFieldHeight);
+    padding: 0 var(--uiFieldPaddingRight) 0 var(--uiFieldPaddingLeft);
+    border-bottom: var(--uiFieldBorderWidth) solid var(--uiFieldBorderColor);  
+  }
+  
+  .a-field .a-field__input::-webkit-input-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+  
+  .a-field .a-field__input::-moz-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+  
+  .a-field .a-field__input:not(:placeholder-shown) ~ .a-field__label-wrap .a-field__label{
+    opacity: 0;
+    bottom: var(--uiFieldPaddingBottom);
+  }
+  
+  .a-field .a-field__input:focus::-webkit-input-placeholder{
+    opacity: 1;
+    transition-delay: .2s;
+  }
+  
+  .a-field .a-field__input:focus::-moz-placeholder{
+    opacity: 1;
+    transition-delay: .2s;
+  }
+  
+  .a-field .a-field__label-wrap{
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--uiFieldHeight);	
+  
+    pointer-events: none;
+    cursor: text;
+  
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .a-field .a-field__label{
+    position: absolute;
+    left: var(--uiFieldPaddingLeft);
+    bottom: calc(50% - .5em);
+  
+    line-height: 1;
+    font-size: var(--uiFieldHintFontSize);
+  
+    pointer-events: none;
+    transition: bottom .2s cubic-bezier(0.9,-0.15, 0.1, 1.15), opacity .2s ease-out;
+    will-change: bottom, opacity;
+  }
+  
+  .a-field .a-field__input:focus ~ .a-field__label-wrap .a-field__label{
+    opacity: 1;
+    bottom: var(--uiFieldHeight);
+    /* 阿萱改的 */
+    font-weight: bold;
+  }
+  .a-field_a1 .a-field__input{
+    transition: border-color .2s ease-out;
+    will-change: border-color;
+  }
+  
+  .a-field_a1 .a-field__input:focus{
+    border-color: var(--fieldBorderColorActive);
+  }
+  
+  .field{
+    --fieldBorderColor: #906559;
+    --fieldBorderColorActive: #906559;
+  }
+
+/* 方法彈出視窗 */
+.x-madal-add-method{
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%)translateX(-50%);
+    width: calc(30%);
+    min-width: 385px;
+    height: calc(50%);
+    max-height: 356px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    
+}
+.x-madal-add-method-title{
+    margin-bottom: 10px;
+}
+.x-madal-add-method-title>h1{
+    margin: 0;
+    font-size: 1.5em;
+}
+.x-madal-add-method >.x-input-width{
+    margin-top: 10px;
+}
+
+.x-madal-add-method-btn{
+    width: 96px;
+    height: 32px;
+    border-radius: 16px;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #906559;
+    cursor: pointer;
+    margin-top: 16px;
+    margin-left: 75%;
+}
+.x-madal-add-method-btn:hover{
+    background-color: #fff;
+    color: #906559;
+    border: 1px solid #906559;
+}

@@ -1,0 +1,265 @@
+.h-login-title{
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    color: #906559;
+    margin-top: 32px;
+}
+.h-asking-layout{
+    display: flex;
+    margin-top: 12px;
+    color: #906559;
+    justify-content: center;
+}
+.h-asking-textbtn{
+    color: #D07171;
+    border-bottom: #D07171 1px solid;
+    height: 20px;
+}
+.h-asking-textbtn:hover{
+    font-weight: bold;
+}
+
+.h-signinbox{
+    background-color: #FFD3D3;
+    border-radius: 10px;
+    display: flex;
+    color: #906559;
+    font-size: 16px;
+    margin-top: 44px;
+    margin-bottom: 64px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+}
+.h-signin-contentarea{
+    margin-top: 36px;
+    margin-bottom: 36px;
+    /* margin-left: 64px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    border-right: #906559 1.5px solid;
+}
+.h-emailbox{
+    display: flex;
+    flex-direction: column;
+    border-bottom: #906559 1.5px solid;
+    margin-top: 34px;
+    width: 70%;
+}
+.h-inputlabel{
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.h-input{
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    margin-left:8px;
+    margin-right: 8px;
+    margin-bottom: 2px;
+    font-size: 20px;
+    color: #906559;
+    height: 32px;
+    padding-top: 0;
+}
+.h-input:focus{
+    outline:none
+}
+.h-passwordbox{
+    display: flex;
+    flex-direction: column;
+    border-bottom: #906559 1.5px solid;
+    margin-top: 32px;
+    width: 70%;
+}
+.h-featurebox{
+    width: 70%;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+.h-remember-checkbox{
+    border: #906559 solid 1px;
+    margin-right: 4px;
+}
+.h-remember-checkbox:checked{
+    background-color: #906559;
+    outline: none;
+}
+.h-forgetpassword{
+    color: #906559;
+}
+.h-forgetpassword:hover{
+    font-weight: bold;
+}
+.h-loginbox{
+    width: 70%;
+}
+.h-login-fillbtn{
+    width: 96px;
+    height: 32px;
+    color: #D07171;
+    background-color: #fff;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 64px;
+    margin-bottom: 34px;
+}
+.h-login-fillbtn:hover{
+    color: #fff;
+    background-color: #D07171;
+}
+.h-socialbox{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    color: #fff;
+}
+.h-googlebox{
+    width: 70%;
+    height: 48px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+.h-googlebox:hover{
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+}
+.h-googleimg{
+    width: 46px;
+    height: 46px;
+    background: url('../img/icon_google.png') no-repeat center;
+    background-size: 20px 20px;
+}
+.h-googlecontent{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.54);
+}
+.h-fbbox{
+    width: 70%;
+    height: 48px;
+    background-color:rgba(61, 91, 150, 1);
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 40px;
+}
+.h-fbbox:hover{
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+}
+.h-fbimg{
+    width: 46px;
+    height: 46px;
+    background: url('../img/icon_facebook.png') no-repeat center;
+    background-size: 20px 20px;
+}
+.h-fbcontent{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+
+.h-birthbox{
+    margin-top: 20px;
+    width: 70%;
+}
+.h-birthday-title{
+    font-weight: bold;
+}
+.h-birthdayselect-box{
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+.h-yearinput{
+    border: #906559 solid 1px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #906559;
+    height: 36px;
+    width: 100px;
+    padding-left: 8px;
+}
+input{
+    outline: none;
+}
+.h-select{
+    border: #906559 solid 1px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #906559;
+    height: 36px;
+    width: 100px;
+    padding-left: 8px;
+    margin-left: 8px;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;       /* Remove default arrow */
+    background: url(../img/icon_dropdown.png) no-repeat center right 8px #fff;   /*Add custom arrow */
+    background-size: 16px 16px;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer; 
+ }
+.h-sexbox{
+    margin-top: 20px;
+    width: 70%;
+}
+.h-sex-title{
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+.h-signup-fillbtn{
+    width: 96px;
+    height: 32px;
+    color: #D07171;
+    background-color: #fff;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 48px;
+    margin-bottom: 16px;
+}
+.h-signup-fillbtn:hover{
+    color: #fff;
+    background-color: #D07171;
+}
+.h-userbox{
+    display: flex;
+    flex-direction: column;
+    border-bottom: #906559 1.5px solid;
+    margin-top: 16px;
+    width: 70%;
+}
+.h-s-emailbox{
+    display: flex;
+    flex-direction: column;
+    border-bottom: #906559 1.5px solid;
+    margin-top: 20px;
+    width: 70%;
+}
+.h-s-passwordbox{
+    display: flex;
+    flex-direction: column;
+    border-bottom: #906559 1.5px solid;
+    margin-top: 20px;
+    width: 70%;
+}

@@ -1,0 +1,13 @@
+{
+    "username":"",
+    "email":"",
+    "password":"",
+    "year":"",
+    "month":"",
+    "day":"",
+    "sex":"",
+    "rememberme":false,
+    "google":false,
+    "facebook":false,
+    "warning":true
+}

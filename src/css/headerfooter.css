@@ -1,0 +1,203 @@
+html{
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+a {
+    text-decoration:none;
+}
+
+.h-main{
+    padding-left: 3%;
+    padding-right: 3%;
+    font-size: 16px;
+    /* margin-left: auto;
+    margin-right: auto;
+    width: 80%; */
+}
+
+/* 導覽列be */
+.navbox{
+    height: 76px;
+    font-size: 16px;
+}
+.nav-logo{
+    background-color: #fff;
+    height: 76px;
+    width: 150px;
+    left: 3%;
+    top:0;
+    position:absolute;;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+.nav-logo-text{
+    color: #D07171;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    margin-top: 28px;
+}
+.nav-layout{
+    background-color: #FFA5A7;
+    width: 100%;
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+.navlist{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 162px;
+}
+.navlist-item{
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    margin-left: 12px;
+    margin-right: 12px;
+    height: 22px;
+}
+.navlist-item:hover{
+    border-bottom: 1px solid #fff;
+}
+.h-login-button{
+    width: 96px;
+    height: 32px;
+    border-radius: 16px;
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.h-login-button:hover{
+    color: #FFA5A7;
+    background-color: #fff;
+}
+/* 導覽列be結束 */
+
+/* footerbe */
+.footerbox{
+    height: 76px;
+    width: 100%;
+    font-size: 16px;
+}
+.h-decorate-pink{
+    height: 16px;
+    background-color: #FFD3D3;
+}
+.footer-layout{
+    background-color: #FFA5A7;
+    display: flex;
+    align-items: center;
+    padding-left: 3.6%;
+    padding-right: 3.6%;
+    height: 60px;
+    color: #fff;
+}
+.footerlist-layout{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+}
+.footerlist{
+    display: flex;
+    align-items: flex-end;
+}
+.footer-logo{
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 8px;
+    color: #fff;
+}
+.footerlist-item{
+    margin-left: 8px;
+    margin-right: 8px;
+    color: #fff;
+}
+.footerlist-item:hover{
+    font-weight: bold;
+}
+/* footer結束be */
+/* loginheader */
+.nav-login-layout{
+    background-color: #FFA5A7;
+    width: 100%;
+    height: 56px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+/* loginheader 結束*/
+/* header */
+.nav-userbox{
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: #FFA5A7;
+}
+
+.nav-userbox:hover +.nav-droparea{
+    display: flex;
+}
+.nav-droparea:hover{
+    display: flex;
+}
+.nav-userbox-title{
+    margin-left: 8px;
+    margin-right: 4px;
+}
+button{
+    outline: none;
+}
+.nav-droparea{
+    position: absolute;
+    right: 2%;
+    top:38px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    z-index: 20;
+    background: url("../img/bg_droparea.png") no-repeat;
+    background-size: contain;
+    width: 140px;
+    height: 96px;
+}
+.nav-setting{
+    width: 80%;
+    margin-top: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #906559;
+    color: #906559;
+    text-align: center;
+}
+.nav-setting:hover{
+    font-weight: bold;
+}
+.nav-logout{
+    margin-top: 6px;
+    color: #906559;
+}
+.nav-logout:hover{
+    font-weight: bold;
+}
