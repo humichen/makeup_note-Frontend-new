@@ -37,7 +37,7 @@ export function Footerbefore() {
             <a href='#intro' className="footerlist-item">平台簡介</a>
             <a href='#about' className="footerlist-item">關於我們</a>
           </div>
-          <div className="footercopyright">&copy; 美妝筆記本 陳鈺文 李淯萱 2020</div>
+          <div className="footercopyright">&copy; 美妝筆記本 陳鈺文 李淯萱 2021</div>
         </div>
 
       </div>
@@ -60,7 +60,7 @@ export function Header() {
   const dispatch = useContext(DispatchContext);
   const state = useContext(StateContext);
   const { userSignin: {userInfo} } = state;
-  // const [me, setme] = useState(Cookie.getJSON("userInfo"))
+  // const [me, setme] = useState(JSON.parse(localStorage.getItem("userInfo")))
   // console.log(me)
   const handleLogout = () => {
     localStorage.removeItem("userInfo");
@@ -101,7 +101,7 @@ export function Footer() {
             <Link to='/Makeup' className="footerlist-item">美妝管理</Link>
             <Link to='/Method' className="footerlist-item">方法管理</Link>
           </div>
-          <div className="footercopyright">&copy; 美妝筆記本 陳鈺文 李淯萱 2020</div>
+          <div className="footercopyright">&copy; 美妝筆記本 陳鈺文 李淯萱 2021</div>
         </div>
 
       </div>

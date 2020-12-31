@@ -7,15 +7,21 @@ import '../css/headerfooter.css';
 import { Header, Footer } from '../components/HeaderFooter'
 import { Link } from 'react-router-dom';
 import { StateContext, DispatchContext } from "../contexts/X-index";
-import { actionType } from "../constants/X-constants";
+import { actionType, SERVER_URL } from "../constants/X-constants";
+import axios from "axios";
 
 import img_user_L from '../img/img_user_L.png'
 import icon_google from '../img/icon_google.png'
 import icon_facebook_blue from '../img/icon_facebook_blue.png'
 
-function AccountsettingsScreen() {
-  const [me, setme] = useState(Cookie.getJSON("userInfo"))
-  const [me2, setme2] = useState(me)
+function AccountsettingsScreen(props) {
+  const dispatch = useContext(DispatchContext);
+  const state = useContext(StateContext);
+  const { userSignin: {userInfo} } = state;
+  localStorage.setItem("userInfo",JSON.stringify(userInfo))
+  console.log(userInfo)
+  // const [me, setme] = useState(JSON.parse(localStorage.getItem("userInfo")))
+  const [me, setme] = useState(userInfo)
   console.log(me)
   const [option1, setoption1] = useState("")
   const [option2, setoption2] = useState("")
@@ -38,9 +44,53 @@ function AccountsettingsScreen() {
       setoption2("女")
       setoption3("男")
     }
-    setme2(Cookie.getJSON("userInfo"));
   }, [])
-
+  useEffect(() => {
+    
+  }, [me])
+  const handleLogout = () => {
+    localStorage.removeItem("userInfo");
+    dispatch({ type: actionType.USER_LOGOUT });
+    // props.history.push("/");
+  }
+  const submitHandler = async (e) => {
+    // e.preventDefault();
+    const name = me.name;
+    const email = me.email;
+    const password =me.password;
+    const year=me.year;
+    const month=me.month;
+    const day=me.day;
+    const sex=me.sex;
+    console.log(userInfo._id)
+    const user = { userId: userInfo._id, name, email, password,year,month,day,sex};
+    dispatch({ type: actionType.USER_UPDATE_PROFILE_REQUEST, payload: user });
+    try {
+      const { data } = await axios.put(
+        SERVER_URL+"/api/users/profile/"+user.userId,
+        user,
+        // {
+        //   headers: { Authorization: `Bearer ${userInfo.token}` },
+        // }
+      );
+      console.log('data=')
+      console.log(data)
+      dispatch({ type: actionType.USER_UPDATE_PROFILE_SUCCESS, payload: data });
+      dispatch({ type: actionType.USER_SIGNIN_SUCCESS, payload: data });
+      localStorage.setItem('userInfo', JSON.stringify(data));
+      console.log(localStorage.getItem("userInfo"))
+      setme(data)
+      console.log(me)
+    } catch (error) {
+      const message = error.response.data.message;
+      dispatch({ type: actionType.USER_UPDATE_PROFILE_FAIL, payload: message });
+      if(error.response.status == 401){
+        localStorage.removeItem("userInfo");
+        dispatch({ type: actionType.USER_LOGOUT });
+        props.history.push("/");
+      }
+    }
+  }
 
   return (
     <div className="App">
@@ -48,9 +98,9 @@ function AccountsettingsScreen() {
       <div className="h-main-setting">
         <div className="h-userleft-area">
           <img src={img_user_L} />
-          <div className="h-userleft-title">{me2.username}</div>
-          <div className="h-userleft-email">{me.email}</div>
-          <Link to="/" className="h-logout-fillbtn">登出</Link>
+          <div className="h-userleft-title">{userInfo.name}</div>
+          <div className="h-userleft-email">{userInfo.email}</div>
+          <Link to="/" className="h-logout-fillbtn" onClick={handleLogout}>登出</Link>
         </div>
         <div className="h-userright-area">
           <div className="h-userinfrobox">
@@ -60,11 +110,15 @@ function AccountsettingsScreen() {
                 setdisable(!disable);
                 if (disable) {
                   setinfrosave("儲存")
+                  console.log(me)
                   // Cookie.set("userInfo", JSON.stringify(me));
                 } else {
                   setinfrosave("修改基本資料")
-                  Cookie.set("userInfo", JSON.stringify(me));
-                  window.location.pathname="/Accountsettings";
+                  localStorage.setItem("userInfo",JSON.stringify(me))
+                  submitHandler();
+                  console.log(me)
+                  // Cookie.set("userInfo", JSON.stringify(me));
+                  // window.location.pathname="/Accountsettings";
                 }
               }}
               >{infrosave}</button>
@@ -73,7 +127,7 @@ function AccountsettingsScreen() {
               <div className="h-userinfro-answer-layout">
                 <div className="h-userinfro-name-layout">
                   <div className="h-userinfro-name-title">姓名</div>
-                  <input value={me.username} className="h-userinfro-name" id="h-userinfro-name" disabled={disable} onChange={(username) => setme({ ...me, username: username.target.value })} />
+                  <input value={me.name} className="h-userinfro-name" id="h-userinfro-name" disabled={disable} onChange={(name) => setme({ ...me, name: name.target.value })} />
                 </div>
                 <div className="h-shorthr"></div>
                 <div className="h-userinfro-birth-layout">
@@ -105,7 +159,7 @@ function AccountsettingsScreen() {
               <div className="h-accountinfro-answer-layout">
                 <div className="h-accountinfro-email-layout">
                   <div className="h-accountinfro-email-title">電子信箱</div>
-                  <div className="h-accountinfro-email">{me.email}</div>
+                  <div className="h-accountinfro-email">{userInfo.email}</div>
                 </div>
                 <div className="h-longhr"></div>
                 <div className="h-accountinfro-password-layout">
@@ -117,9 +171,12 @@ function AccountsettingsScreen() {
                     setdisable2(!disable2);
                     if (disable2) {
                       setpswsave("儲存")
+                      // localStorage.setItem("userInfo",JSON.stringify(me))
                     } else {
                       setpswsave("修改密碼")
-                      Cookie.set("userInfo", JSON.stringify(me));
+                      // Cookie.set("userInfo", JSON.stringify(me));
+                      // localStorage.setItem("userInfo",JSON.stringify(me))
+                      submitHandler();
                     }
                   }} >{pswsave}</button>
                 </div>
