@@ -150,6 +150,7 @@
     color: #D07171;
     background-color: #ffffff;
     padding-left: 4px;
+    width: 100px;
 }
 .h-userinfro-sex:disabled{
     color: #D07171;

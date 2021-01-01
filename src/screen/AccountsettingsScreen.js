@@ -15,14 +15,11 @@ import icon_google from '../img/icon_google.png'
 import icon_facebook_blue from '../img/icon_facebook_blue.png'
 
 function AccountsettingsScreen(props) {
+  const { userSignin } = useContext(StateContext);
+  const { loading, userInfo, error } = userSignin;
   const dispatch = useContext(DispatchContext);
-  const state = useContext(StateContext);
-  const { userSignin: {userInfo} } = state;
-  localStorage.setItem("userInfo",JSON.stringify(userInfo))
-  console.log(userInfo)
-  // const [me, setme] = useState(JSON.parse(localStorage.getItem("userInfo")))
+
   const [me, setme] = useState(userInfo)
-  console.log(me)
   const [option1, setoption1] = useState("")
   const [option2, setoption2] = useState("")
   const [option3, setoption3] = useState("")
@@ -45,9 +42,6 @@ function AccountsettingsScreen(props) {
       setoption3("男")
     }
   }, [])
-  useEffect(() => {
-    
-  }, [me])
   const handleLogout = () => {
     localStorage.removeItem("userInfo");
     dispatch({ type: actionType.USER_LOGOUT });
@@ -78,9 +72,6 @@ function AccountsettingsScreen(props) {
       dispatch({ type: actionType.USER_UPDATE_PROFILE_SUCCESS, payload: data });
       dispatch({ type: actionType.USER_SIGNIN_SUCCESS, payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
-      console.log(localStorage.getItem("userInfo"))
-      setme(data)
-      console.log(me)
     } catch (error) {
       const message = error.response.data.message;
       dispatch({ type: actionType.USER_UPDATE_PROFILE_FAIL, payload: message });
@@ -110,15 +101,12 @@ function AccountsettingsScreen(props) {
                 setdisable(!disable);
                 if (disable) {
                   setinfrosave("儲存")
-                  console.log(me)
                   // Cookie.set("userInfo", JSON.stringify(me));
                 } else {
                   setinfrosave("修改基本資料")
                   localStorage.setItem("userInfo",JSON.stringify(me))
                   submitHandler();
-                  console.log(me)
                   // Cookie.set("userInfo", JSON.stringify(me));
-                  // window.location.pathname="/Accountsettings";
                 }
               }}
               >{infrosave}</button>
@@ -171,7 +159,6 @@ function AccountsettingsScreen(props) {
                     setdisable2(!disable2);
                     if (disable2) {
                       setpswsave("儲存")
-                      // localStorage.setItem("userInfo",JSON.stringify(me))
                     } else {
                       setpswsave("修改密碼")
                       // Cookie.set("userInfo", JSON.stringify(me));
