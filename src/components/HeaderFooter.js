@@ -1,5 +1,5 @@
-import React, { useEffect,useState,useContext } from 'react';
-import Cookie from "js-cookie";
+import React, {useContext } from 'react';
+// import Cookie from "js-cookie";
 import '../css/normalize.css';
 import '../css/indexstyle.css';
 import '../css/headerfooter.css';
@@ -13,8 +13,8 @@ import img_user from '../img/img_user.png'
 export function Headerbefore() {
   return (
     <div className="navbox">
-      <div className="nav-logo">
-        <a href='#' className="nav-logo-text">美妝筆記本</a>
+      <div className="nav-logo" id="nav-logo">
+        <a href='#nav-logo' className="nav-logo-text">美妝筆記本</a>
       </div>
       <nav className="nav-layout">
         <div className="navlist">

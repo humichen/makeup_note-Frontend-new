@@ -14,7 +14,6 @@ import medata from '../json/user_data.json'
 
 function SignupScreen(props) {
   const [me, setme] = useState(medata)
-  console.log(me)
 
   const { userSignin } = useContext(StateContext);
   const { loading, userInfo, error } = userSignin;
@@ -49,22 +48,22 @@ function SignupScreen(props) {
         Cookie.set("userInfo", JSON.stringify(me));//要刪
 
         window.location.pathname="/Welcome";
+        console.log("success")
       } catch (error) {
         dispatch({
           type: actionType.USER_REGISTER_FAIL,
           payload: error.message,
         });
+        alert("此帳戶已存在");
       }
       
      
     }
-    
-    console.log("success")
   }
   var A=[];
   var B=[];
   var C=[];
-  for (let i = 2020; i >=1920; i--) {
+  for (let i = 2021; i >=1920; i--) {
     A.push(i)  
   }
   for (let i = 1; i <=12; i++) {
@@ -73,8 +72,6 @@ function SignupScreen(props) {
   for (let i = 1; i <=31; i++) {
     C.push(i)  
   }
-  console.log(B)
-  console.log(C)
 
 
   useEffect(() => {
@@ -103,7 +100,7 @@ function SignupScreen(props) {
             </div>
             <div className="h-s-emailbox">
               <label for="email" className="h-inputlabel">電子信箱</label>
-              <input id="email" type="text" className="h-input" onChange={(email) => setme({ ...me, email: email.target.value })} />
+              <input id="email" type="email" className="h-input" onChange={(email) => setme({ ...me, email: email.target.value })} />
             </div>
             <div className="h-s-passwordbox">
               <label for="password" className="h-inputlabel">設定密碼</label>

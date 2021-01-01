@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import * as QueryString from "query-string";
-import Cookie, { set } from "js-cookie";
 import '../css/normalize.css';
 import '../css/accountstyle.css';
 import '../css/headerfooter.css';
@@ -26,7 +25,7 @@ function AccountsettingsScreen(props) {
   const [disable, setdisable] = useState(true)
   const [disable2, setdisable2] = useState(true)
   const [infrosave, setinfrosave] = useState("修改基本資料")
-  const [pswsave, setpswsave] = useState("修改密碼")
+  const [pswsave, setpswsave] = useState("   ")
   useEffect(() => {
     if (me.sex === "男") {
       setoption1("男")
@@ -63,9 +62,9 @@ function AccountsettingsScreen(props) {
       const { data } = await axios.put(
         SERVER_URL+"/api/users/profile/"+user.userId,
         user,
-        // {
-        //   headers: { Authorization: `Bearer ${userInfo.token}` },
-        // }
+        {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        }
       );
       console.log('data=')
       console.log(data)
@@ -152,19 +151,23 @@ function AccountsettingsScreen(props) {
                 <div className="h-longhr"></div>
                 <div className="h-accountinfro-password-layout">
                   <div className="h-accountinfro-passwordbox-layout">
-                    <div className="h-accountinfro-password-title">密碼</div>
-                    <input type="password" value={me.password} className="h-accountinfro-password" disabled={disable2} onChange={(password) => setme({ ...me, password: password.target.value })} />
-                  </div>
-                  <button className="h-accountinfro-changebtn" onClick={() => {
+                    <button className="h-accountinfro-password-title" disabled={!disable2} onClick={() => {
                     setdisable2(!disable2);
-                    if (disable2) {
                       setpswsave("儲存")
-                    } else {
-                      setpswsave("修改密碼")
+                      setme({ ...me, password:""})
+                    }}>修改密碼</button>
+                    <input type="password" value={me.password} className="h-accountinfro-password" hidden={disable2} onChange={(password) => setme({ ...me, password: password.target.value })} />
+                  </div>
+                  <button className="h-accountinfro-changebtn" disabled={disable2} onClick={() => {
+                    setdisable2(!disable2);
+                    // if (disable2) {
+                    //   setpswsave("儲存")
+                    // } else {
+                      setpswsave("   ")
                       // Cookie.set("userInfo", JSON.stringify(me));
                       // localStorage.setItem("userInfo",JSON.stringify(me))
                       submitHandler();
-                    }
+                    // }
                   }} >{pswsave}</button>
                 </div>
               </div>

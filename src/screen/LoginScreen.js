@@ -48,16 +48,18 @@ function LoginScreen(props) {
         dispatch({ type: actionType.USER_SIGNIN_SUCCESS, payload: data });
         localStorage.setItem("userInfo", JSON.stringify(data));
         props.history.push("/Welcome");
+        console.log("success")
       } catch (error) {
         dispatch({
           type: actionType.USER_SIGNIN_FAIL,
           payload: error.message,
         });
-        alert("帳號或密碼錯誤")
+        if(error.response.status == 401){
+          localStorage.removeItem("userInfo");
+          alert("帳號或密碼錯誤");
+        }
       }
     }
-
-    console.log("success")
   }
 
   useEffect(() => {
@@ -81,7 +83,7 @@ function LoginScreen(props) {
           <div className="h-signin-contentarea">
             <div className="h-emailbox">
               <label for="email" className="h-inputlabel">電子信箱</label>
-              <input id="email" type="text" className="h-input" onChange={(email) => setemail(email.target.value)} />
+              <input id="email" type="email" className="h-input" onChange={(email) => setemail(email.target.value)} />
             </div>
             <div className="h-passwordbox">
               <label for="password" className="h-inputlabel">密碼</label>

@@ -226,9 +226,22 @@
 }
 .h-accountinfro-password-title{
     margin-left: 32px;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: #D07171;
+    padding: 0;
+    border-bottom: #D07171 0.5px solid;
+}
+.h-accountinfro-password-title:hover{
+    font-weight: bold;
+    border-bottom: #D07171 1px solid;
+}
+.h-accountinfro-password-title:disabled{
+    font-weight: normal;
+    border: 0;
 }
 .h-accountinfro-password{
-    margin-left: 80px;
+    margin-left: 50px;
     color: #D07171;
     background-color: #FFEEEE;
     border: 0;
