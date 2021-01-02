@@ -60,8 +60,9 @@ const MakeupModal = () => {
     }
     //按下新增
     const handleAddToList = () => {
-        if(code===-1||search.color_code_choose[code]==undefined){ alert("沒選擇色號喔")}
+        if(code===-1||search.color_code_choose===undefined||search.color_code_choose[code]===undefined||qty===0){ alert("沒選擇色號喔")}
         else if(time===""){ alert("輸入保存期限喔")}
+        else if(!/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(time)){alert("日期格式不正確")}
         else{
             dispatch({ type: CLOSE_Modal});
             // console.log(code);
@@ -116,11 +117,12 @@ const MakeupModal = () => {
     }, [state.open_edit]);
     //按下編輯
     const handleEditToList = () => {
-        if(code==-1||search.color_code_choose[code]==undefined){ alert(code)}
-        else if(time==""){ alert("輸入保存期限喔")}
+        if(code===-1||search.color_code_choose===undefined||search.color_code_choose[code]===undefined||qty===0){ alert("沒選擇色號喔")}
+        else if(time===""){ alert("輸入保存期限喔")}
+        else if(!/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(time)){alert("日期格式不正確")}
         else{
             search.color_choose.map((ma,index)=>{
-                if(index==code)
+                if(index===code)
                 {   
                     dispatch({ type: CLOSE_Modal_EDIT});
                     let href=window.location.href;
@@ -161,7 +163,7 @@ const MakeupModal = () => {
                             </div>
                             <div className="x-madal-add-makeup-input">
                                 <label className="field a-field a-field_a1 page__field x-input-width">
-                                    <input type="text" className="field__input a-field__input" placeholder="請輸入保存期限" required onChange={(e) => {setTime(e.target.value);}} value={time}/>
+                                    <input type="text" className="field__input a-field__input" placeholder="請輸入保存期限(YYYY/MM/DD)" required onChange={(e) => {setTime(e.target.value);}} value={time}/>
                                     <span className="a-field__label-wrap">
                                         <span className="a-field__label">保存期限</span>
                                     </span>
@@ -225,7 +227,7 @@ const MakeupModal = () => {
                             </div>
                             <div className="x-madal-add-makeup-input">
                                 <label className="field a-field a-field_a1 page__field x-input-width">
-                                    <input type="text" className="field__input a-field__input" placeholder="請輸入保存期限" required onChange={(e) => {setTime(e.target.value);}} value={time}/>
+                                    <input type="text" className="field__input a-field__input" placeholder="請輸入保存期限(YYYY/MM/DD)" required onChange={(e) => {setTime(e.target.value);}} value={time}/>
                                     <span className="a-field__label-wrap">
                                         <span className="a-field__label">保存期限</span>
                                     </span>

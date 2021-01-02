@@ -91,6 +91,18 @@ textarea{
     color: #D07171;
     height: 20px;
     margin-bottom: 20px;
+    display: inline-block;
+}
+.x-tag-all{
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 0.8em;
+    color: #D07171;
+}
+.x-tag-all:hover{
+    border-bottom:1px  #D07171 solid; 
+    padding-bottom:2px;
 }
 .x-tag-box{
     background-color: #FFEEEE;
@@ -98,6 +110,7 @@ textarea{
     padding: 10px 12px;
     border-radius: 10px;
     height: 100%;
+    min-height: 100vh;
     /* overflow: scroll;
     overflow-x: hidden; */
 }
@@ -117,6 +130,26 @@ textarea{
     background-color: #906559;
     color: #fff;
 }
+.x-tag-btn:focus{
+    background-color: #906559;
+    color: #fff;
+}
+.x-tag-btn-select{
+    background-color: #906559;
+    color: #fff;
+}
+.x-tag-nothing{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:90vh;
+    color: #906559;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 2rem;
+    font-weight: bold;
+}
+
 /* 分隔線 */
 /* .x-divider{
     width: 1px;
@@ -171,7 +204,7 @@ li{
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 .x-list-box-expired{
-    background-color: #FFED95;
+    background-color: #FFED95 !important;
 }
 .x-list-box > img{
     display: inline-block;

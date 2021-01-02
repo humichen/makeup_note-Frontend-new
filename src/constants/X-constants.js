@@ -15,6 +15,8 @@ export const METHODS_INIT_ITEMS = "METHODS_INIT_ITEMS"
 export const METHODS_ADD_ITEM = "METHODS_ADD_ITEM"
 export const METHODS_REMOVE_ITEM = "METHODS_REMOVE_ITEM"
 export const METHODS_EDIT_ITEM = "METHODS_EDIT_ITEM"
+//Tag載入
+export const TAG_INIT = "TAG_INIT"
 //SERVER
 export const SERVER_URL = "http://localhost:5000";
 

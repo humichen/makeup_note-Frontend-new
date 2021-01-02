@@ -1,4 +1,4 @@
-import { OPEN_Modal, CLOSE_Modal,OPEN_Modal_EDIT,CLOSE_Modal_EDIT, actionType, MAKEUPS_INIT_ITEMS, MAKEUPS_REMOVE_ITEM, MAKEUPS_ADD_ITEM,MAKEUPS_EDIT_ITEM,METHODS_INIT_ITEMS,METHODS_ADD_ITEM, METHODS_REMOVE_ITEM,METHODS_EDIT_ITEM,MAKEUPS_DATA_INIT,MAKEUPS_DETAIL } from "../constants/X-constants"
+import { OPEN_Modal, CLOSE_Modal,OPEN_Modal_EDIT,CLOSE_Modal_EDIT, actionType, MAKEUPS_INIT_ITEMS, MAKEUPS_REMOVE_ITEM, MAKEUPS_ADD_ITEM,MAKEUPS_EDIT_ITEM,METHODS_INIT_ITEMS,METHODS_ADD_ITEM, METHODS_REMOVE_ITEM,METHODS_EDIT_ITEM,MAKEUPS_DATA_INIT,MAKEUPS_DETAIL,TAG_INIT} from "../constants/X-constants"
 
 const initialAppState = {
   open: false,
@@ -8,6 +8,7 @@ const initialAppState = {
   makeup_data:[],
   methodsItems: [],
   editItems:[],
+  tags_all:[],
   userSignin: {
     loading: false,
     userInfo: localStorage.getItem("userInfo")
@@ -85,6 +86,9 @@ const appReducer = (state, action) => {
         }
       });
       return { ...state, methodsItems };
+    //Tag載入
+    case TAG_INIT:
+      return { ...state, tags_all: action.payload };  
     //登入註冊
     case actionType.USER_INIT_INFO:
       return {

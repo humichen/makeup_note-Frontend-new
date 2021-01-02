@@ -1,9 +1,9 @@
-import React,{ useContext,useEffect} from 'react';
+import React,{ useContext,useEffect,useState} from 'react';
 // 美妝彈出視窗(還要放編輯)
 import MakeupModal from "./MakeupModal";
 import { useHistory } from "react-router-dom";
 import { StateContext, DispatchContext } from "../contexts/X-index"
-import { OPEN_Modal_EDIT,MAKEUPS_DETAIL,SERVER_URL,MAKEUPS_REMOVE_ITEM,MAKEUPS_INIT_ITEMS } from "../constants/X-constants"
+import { actionType,OPEN_Modal_EDIT,MAKEUPS_DETAIL,SERVER_URL,MAKEUPS_REMOVE_ITEM,MAKEUPS_INIT_ITEMS } from "../constants/X-constants"
 import axios from "axios";
 import img_default from '../img/img_default.png';
 import * as QueryString from "query-string";
@@ -18,62 +18,122 @@ const MakeupDetail = ({match}) => {
     const dispatch = useContext(DispatchContext);
     const state = useContext(StateContext);
     const {makeupsItems} = useContext(StateContext);
+    const { userSignin } = useContext(StateContext);
+    const { loading, userInfo, error } = userSignin;
+    // const [me, setme] = useState(localStorage.getItem("userInfo"))
+    const [me, setme] = useState(userInfo)
+    
     const location = useLocation();
 
     const {makeup_detail} = useContext(StateContext);
     const { qty,title,img,time,tag,color_code,note,type,edit_ID} = QueryString.parse(location.search);
 
-    // const makeup_detail = makeupsItems.find(
-    //     (x) => x._id === match.params.id
-    // );
+    //今天
+    var Today=new Date();
+    //計算天數相差
+    var DateDiff = function (sDate1, sDate2) { // sDate1 和 sDate2 是 2016-06-18 格式
+        var oDate1 = new Date(sDate1);
+        var oDate2 = new Date(sDate2);
+        var iDays = parseInt(Math.abs(oDate1 - oDate2) / 1000 / 60 / 60 / 24); // 把相差的毫秒數轉換為天數
+        return iDays;
+    };
     const makeupId = match.params.id;
     //刪除    
     const removeFromCart = async (_id) => {
-        dispatch({ type: MAKEUPS_REMOVE_ITEM, payload: _id });
-        const { data } = await axios.delete(`${SERVER_URL}/api/makeups/${_id}`);
-        dispatch({ type: MAKEUPS_INIT_ITEMS, payload: data });
-        history.push("/Makeup");
+        try {
+            const id =userInfo._id
+            dispatch({ type: MAKEUPS_REMOVE_ITEM, payload: _id });
+            const { data } = await axios.delete(`${SERVER_URL}/api/makeups/${_id}`,
+            {
+                headers: { Authorization: `Bearer ${userInfo.token}` },
+                data :{id:id}
+            });
+            dispatch({ type: MAKEUPS_INIT_ITEMS, payload: data });
+            history.push("/Makeup");
+        } catch (error) {
+            
+            if(error.response.status == 401){
+                localStorage.removeItem("userInfo");
+                dispatch({ type: actionType.USER_LOGOUT });
+                history.push("/login");
+            }
+
+        }
+        
     };
 
     //編輯
     const editToCart = async (qty,title,img,time,tag,color_code,note,edit_ID) => {
         var tag_array=tag.split(',');
         var color_code="#"+color_code;
-        const { data } = await axios.put(SERVER_URL+'/api/makeups/'+edit_ID, {
-            title,
-            img,
-            time,
-            tag_array,
-            qty,
-            color_code,
-            note
-          });
-        dispatch({ type: MAKEUPS_INIT_ITEMS, payload: data });
-        const fetchProduct = async () => {
-            // try {
-                // dispatch({ type: actionType.PRODUCT_DETAILS_REQUEST });
-                const { data } = await axios.get(`${SERVER_URL}/api/makeups/${makeupId}`);
-                dispatch({ type: MAKEUPS_DETAIL, payload: data });
-            // }
-            // catch(error){
-            //     alert(error.message);
-            //     // dispatch({ type: actionType.PRODUCT_DETAILS_FAIL, payload: error.message});
-            // }
-        };
-        fetchProduct();
+        try {
+            const id =userInfo._id
+            const { data } = await axios.put(SERVER_URL+'/api/makeups/'+edit_ID, {
+                title,
+                img,
+                time,
+                tag_array,
+                qty,
+                color_code,
+                note,
+                id
+            },
+            {
+                headers: { Authorization: `Bearer ${userInfo.token}` },
+            });
+            dispatch({ type: MAKEUPS_INIT_ITEMS, payload: data });
+            const fetchProduct = async () => {
+                try {
+                    const id =userInfo._id
+                    const { data } = await axios.post(`${SERVER_URL}/api/makeups/${makeupId}`,
+                    {id},
+                    {
+                        headers: { Authorization: `Bearer ${userInfo.token}` },
+                    });
+                    dispatch({ type: MAKEUPS_DETAIL, payload: data });
+                }
+                catch(error){
+                    if(error.response.status == 401){
+                        localStorage.removeItem("userInfo");
+                        dispatch({ type: actionType.USER_LOGOUT });
+                        history.push("/login");
+                    }
+                }
+            };
+            fetchProduct();
+        } catch (error) {
+            if(error.response.status == 401){
+                localStorage.removeItem("userInfo");
+                dispatch({ type: actionType.USER_LOGOUT });
+                history.push("/login");
+            }
+        }
+        
+    };
+
+    //找出裡面有選中tag的資料
+    const ContainTag = (tag) => {
+        history.push("/Makeup"+"?tag_w="+tag+"&type=ContainTag");
     };
 
     useEffect(() => {
         const fetchProduct = async () => {
-            // try {
-                // dispatch({ type: actionType.PRODUCT_DETAILS_REQUEST });
-                const { data } = await axios.get(`${SERVER_URL}/api/makeups/${makeupId}`);
+            try {
+                const id =userInfo._id
+                const { data } = await axios.post(`${SERVER_URL}/api/makeups/${makeupId}`,
+                {id},
+                {
+                    headers: { Authorization: `Bearer ${userInfo.token}` },
+                });
                 dispatch({ type: MAKEUPS_DETAIL, payload: data });
-            // }
-            // catch(error){
-            //     alert(error.message);
-            //     // dispatch({ type: actionType.PRODUCT_DETAILS_FAIL, payload: error.message});
-            // }
+            }
+            catch(error){
+                if(error.response.status == 401){
+                    localStorage.removeItem("userInfo");
+                    dispatch({ type: actionType.USER_LOGOUT });
+                    history.push("/login");
+                }
+            }
         };
         fetchProduct();
     }, []);
@@ -90,7 +150,8 @@ const MakeupDetail = ({match}) => {
 
     return (
         <div className="x-makeup-editpage">
-            <div className="x-makeup-edit-detail">
+            <div className={DateDiff(Today,makeup_detail.time)<3?"x-makeup-edit-detail x-list-box-expired":"x-makeup-edit-detail"}>
+                <div className={DateDiff(Today,makeup_detail.time)<3?"x-expired":"x-expire display-none"}></div>
                 <img src={makeup_detail.img!==""?"../../"+makeup_detail.img:img_default} onerror="javascript:this.src='../img/img_default.png'" alt=""/>
                 <div className="x-editpage-detail">
                     <div className="x-editpage-detail-title">{makeup_detail.title}</div>
@@ -99,7 +160,7 @@ const MakeupDetail = ({match}) => {
                 </div>
                 <div className="x-method-tag">
                     { makeup_detail.tag_array===undefined? console.log("還沒載入"):makeup_detail.tag_array.map(option => 
-                        <button className="x-tag-btn">{option}</button>
+                        <button className="x-tag-btn" onClick={()=>ContainTag(option)}>#{option}</button>
                     )}
                 </div>
                 <button id="x-tooltipmenu" className="fa fa-ellipsis-v"></button>
