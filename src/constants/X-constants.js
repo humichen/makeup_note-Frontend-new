@@ -18,7 +18,9 @@ export const METHODS_EDIT_ITEM = "METHODS_EDIT_ITEM"
 //Tag載入
 export const TAG_INIT = "TAG_INIT"
 //SERVER
-export const SERVER_URL = "http://localhost:5000";
+// export const SERVER_URL = "http://localhost:5000";
+//HRROKU_SERVER
+export const SERVER_URL = "https://makeupnote.herokuapp.com";
 
 
 export const actionType = {

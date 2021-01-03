@@ -17,7 +17,9 @@ function AccountsettingsScreen(props) {
   const { userSignin } = useContext(StateContext);
   const { loading, userInfo, error } = userSignin;
   const dispatch = useContext(DispatchContext);
-
+  if(userInfo===""){
+    props.history.push("/Login");
+  }
   const [me, setme] = useState(userInfo)
   const [option1, setoption1] = useState("")
   const [option2, setoption2] = useState("")
@@ -50,12 +52,11 @@ function AccountsettingsScreen(props) {
     // e.preventDefault();
     const name = me.name;
     const email = me.email;
-    const password =me.password;
+    const password =userInfo.password;
     const year=me.year;
     const month=me.month;
     const day=me.day;
     const sex=me.sex;
-    console.log(userInfo._id)
     const user = { userId: userInfo._id, name, email, password,year,month,day,sex};
     dispatch({ type: actionType.USER_UPDATE_PROFILE_REQUEST, payload: user });
     try {
@@ -66,8 +67,38 @@ function AccountsettingsScreen(props) {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         }
       );
-      console.log('data=')
-      console.log(data)
+      dispatch({ type: actionType.USER_UPDATE_PROFILE_SUCCESS, payload: data });
+      dispatch({ type: actionType.USER_SIGNIN_SUCCESS, payload: data });
+      localStorage.setItem('userInfo', JSON.stringify(data));
+    } catch (error) {
+      const message = error.response.data.message;
+      dispatch({ type: actionType.USER_UPDATE_PROFILE_FAIL, payload: message });
+      if(error.response.status == 401){
+        localStorage.removeItem("userInfo");
+        dispatch({ type: actionType.USER_LOGOUT });
+        props.history.push("/");
+      }
+    }
+  }
+  const submitHandler2 = async (e) => {
+    // e.preventDefault();
+    const name = me.name;
+    const email = me.email;
+    const password =me.password;
+    const year=me.year;
+    const month=me.month;
+    const day=me.day;
+    const sex=me.sex;
+    const user = { userId: userInfo._id, name, email, password,year,month,day,sex};
+    dispatch({ type: actionType.USER_UPDATE_PROFILE_REQUEST, payload: user });
+    try {
+      const { data } = await axios.put(
+        SERVER_URL+"/api/users/password/"+user.userId,
+        user,
+        {
+          headers: { Authorization: `Bearer ${userInfo.token}` },
+        }
+      );
       dispatch({ type: actionType.USER_UPDATE_PROFILE_SUCCESS, payload: data });
       dispatch({ type: actionType.USER_SIGNIN_SUCCESS, payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
@@ -166,7 +197,7 @@ function AccountsettingsScreen(props) {
                       setpswsave("   ")
                       // Cookie.set("userInfo", JSON.stringify(me));
                       // localStorage.setItem("userInfo",JSON.stringify(me))
-                      submitHandler();
+                      submitHandler2();
                     // }
                   }} >{pswsave}</button>
                 </div>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React,{ useContext }from 'react';
 import '../css/normalize.css';
 import '../css/indexstyle.css';
 import '../css/headerfooter.css';
 import { Headerbefore, Footerbefore } from '../components/HeaderFooter'
 import { Link } from 'react-router-dom';
+import { StateContext} from "../contexts/X-index";
 
 import img_indexpic from '../img/img_indexpic.png'
 import img_makeup from '../img/img_makeup.png'
@@ -11,7 +12,12 @@ import img_matain from '../img/img_matain.png'
 import img_girl from '../img/img_girl.png'
 import img_girl2 from '../img/img_girl2.png'
 
-function HomeScreen() {
+function HomeScreen(props) {
+  const { userSignin } = useContext(StateContext);
+  const { loading, userInfo, error } = userSignin;
+  if(userInfo!==""){
+    props.history.push("/Welcome");
+  }
   return (
     <div className="App">
       <Headerbefore />

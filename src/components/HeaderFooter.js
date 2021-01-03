@@ -21,7 +21,7 @@ export function Headerbefore() {
           <a href='#intro' className="navlist-item">平台簡介</a>
           <a href='#about' className="navlist-item">關於我們</a>
         </div>
-        <Link to='/login' className="h-login-button">登入</Link>
+        <Link to='/Login' className="h-login-button">登入</Link>
       </nav>
     </div>
   );
@@ -62,6 +62,7 @@ export function Header() {
   const { userSignin: {userInfo} } = state;
   // const [me, setme] = useState(JSON.parse(localStorage.getItem("userInfo")))
   // console.log(me)
+
   const handleLogout = () => {
     localStorage.removeItem("userInfo");
     dispatch({ type: actionType.USER_LOGOUT });

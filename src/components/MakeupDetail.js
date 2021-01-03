@@ -150,8 +150,8 @@ const MakeupDetail = ({match}) => {
 
     return (
         <div className="x-makeup-editpage">
-            <div className={DateDiff(Today,makeup_detail.time)<3?"x-makeup-edit-detail x-list-box-expired":"x-makeup-edit-detail"}>
-                <div className={DateDiff(Today,makeup_detail.time)<3?"x-expired":"x-expire display-none"}></div>
+            <div className={DateDiff(Today,makeup_detail.time)<30?"x-makeup-edit-detail x-list-box-expired":"x-makeup-edit-detail"}>
+                <div className={DateDiff(Today,makeup_detail.time)<30?"x-expired":"x-expire display-none"}></div>
                 <img src={makeup_detail.img!==""?"../../"+makeup_detail.img:img_default} onerror="javascript:this.src='../img/img_default.png'" alt=""/>
                 <div className="x-editpage-detail">
                     <div className="x-editpage-detail-title">{makeup_detail.title}</div>

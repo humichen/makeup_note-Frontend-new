@@ -13,12 +13,12 @@ const initialAppState = {
     loading: false,
     userInfo: localStorage.getItem("userInfo")
       ? JSON.parse(localStorage.getItem("userInfo"))
-      : null,
+      : "",
     error: "",
   },
   userRegister: {
     loading: false,
-    userInfo: null,
+    userInfo: "",
     error: "",
   },
 };
@@ -139,7 +139,7 @@ const appReducer = (state, action) => {
         // cartItems,
         userSignin: {
           ...state.userSignin,
-          userInfo: null,
+          userInfo: "",
         },
       };
 

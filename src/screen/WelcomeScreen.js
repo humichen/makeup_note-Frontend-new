@@ -1,17 +1,23 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 import '../css/normalize.css';
 import '../css/welcomestyle.css';
 import '../css/headerfooter.css';
 import { Header, Footer } from '../components/HeaderFooter'
 import { Link } from 'react-router-dom';
+import { StateContext} from "../contexts/X-index";
 
 import icon_makeup from '../img/icon_makeup.png'
 import icon_mantain from '../img/icon_mantain.png'
 
-function HomeScreen() {
+function HomeScreen(props) {
+  const { userSignin } = useContext(StateContext);
+  const { loading, userInfo, error } = userSignin;
+  if(userInfo===""){
+    props.history.push("/Login");
+  }
   return (
     <div className="App">
-      <Header />
+      <Header/>
       <div className="h-main">
         <div className="h-welcomebg">
           <div className="h-notebookbg">

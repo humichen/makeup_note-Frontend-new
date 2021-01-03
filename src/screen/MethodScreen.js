@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 // import { Link } from "react-router-dom";
+import { StateContext} from "../contexts/X-index";
 import Tag from "../components/Tag";
 // 上方搜尋列跟新增按鈕
 import Detail_top from "../components/Detail_top";
@@ -8,7 +9,12 @@ import MethodList from "../components/MethodList";
 import { Header, Footer } from '../components/HeaderFooter';
 
 
-const MethodScreen = () => {
+const MethodScreen = (props) => {
+    const { userSignin } = useContext(StateContext);
+    const { loading, userInfo, error } = userSignin;
+    if(userInfo===""){
+      props.history.push("/Login");
+    }
     return (
         <div>
             <Header/>

@@ -208,8 +208,8 @@ const MakeupListBox = () => {
             {makeupsItems.length!=0?
                 // <!-- 美妝管理列表 -->
                 makeupsItems.map(makeup => (
-                        <li className={DateDiff(Today,makeup.time)<3?"x-list-box x-list-box-expired":"x-list-box"}>
-                            <div className={DateDiff(Today,makeup.time)<3?"x-expired":"x-expire display-none"}></div>
+                        <li className={DateDiff(Today,makeup.time)<30?"x-list-box x-list-box-expired":"x-list-box"}>
+                            <div className={DateDiff(Today,makeup.time)<30?"x-expired":"x-expire display-none"}></div>
                             <img src={"../"+makeup.img} alt=""/>
                             <div className="x-list-detail">
                             <Link to={"/Makeup/detail/"+makeup._id}>
