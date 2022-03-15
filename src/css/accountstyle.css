@@ -1,8 +1,9 @@
 .h-main-setting{
     width: 100%;
     display: flex;
-    margin-top: -20px;
+    margin-top: 56px;
     color:#D07171;
+    min-height: 100vh;
 }
 .h-userleft-area{
     width: 20%;

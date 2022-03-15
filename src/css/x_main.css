@@ -14,7 +14,7 @@ textarea{
     font-size: 16px;
     text-align: end;
     margin: 0 4.5vw;
-    margin-top: 7px;
+    margin-top: 83px;
 }
 .x-dib{
     display: inline-block;
@@ -548,7 +548,8 @@ li{
     font-size: 16px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-.x-madal-add-makeup{
+.x-madal-add-makeup-layout {
+    padding: 20px;
     margin: 0 auto;
     position: absolute;
     top: 50%;
@@ -558,9 +559,14 @@ li{
     min-width: 400px;
     height: calc(70%);
     max-height: 484px;
+    /* min-height: 450px; */
     background-color: #fff;
     border-radius: 10px;
-    padding: 20px;
+    overflow: hidden;
+}
+.x-madal-add-makeup{
+    height: 100%;
+    overflow: scroll;
 }
 .x-close{
     position: absolute;
@@ -574,6 +580,7 @@ li{
 .x-madal-add-makeup-box{
     display: flex;
     width: 95%;
+    /* overflow: scroll; */
     /* border: 1px solid #906559; */
 }
 .x-madal-add-makeup-box-right{
@@ -824,6 +831,9 @@ option{
   }
 
 /* 方法彈出視窗 */
+.x-madal-add-method-layout {
+    overflow: hidden;
+}
 .x-madal-add-method{
     margin: 0 auto;
     position: absolute;
@@ -837,7 +847,9 @@ option{
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
-    
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 .x-madal-add-method-title{
     margin-bottom: 10px;
